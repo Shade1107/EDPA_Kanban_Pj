@@ -1,6 +1,6 @@
 <?php
     require_once("models/model.php");
-    require_once("DatabaseConnection.php");
+    require_once("models/DatabaseConnection.php");
 
     class role extends Model{
         private static $table = "roles";
