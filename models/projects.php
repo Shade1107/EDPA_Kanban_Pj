@@ -1,6 +1,6 @@
 <?php
     require_once("models/model.php");
-    require_once("DatabaseConnection.php");
+    require_once("models/DatabaseConnection.php");
 
     class project extends Model{
         private static $table = "projects";
