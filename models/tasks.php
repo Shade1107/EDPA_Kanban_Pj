@@ -45,7 +45,7 @@
                 $task-> project_id = $row->project_id;
                 $task->stage_id = $row->stage_id;
                 $task->short_description = $row->short_description;
-                $task->detail = $row->detail;
+                $task->task_name = $row->task_name;
                 
             }
             return $task;

@@ -1,7 +1,11 @@
 <?php 
 require_once('header&footer/header.php');
+
+require_once('../models/DatabaseConnection.php');
+
 ?>
- <link rel="icon" type="image/png" href="image/logo.PNG">
+ 
+<link rel="icon" type="image/png" href="image/logo.PNG">
      <!--  <form class="input-container">
         <div class="fields">
           <input id="title" placeholder="title..." />
@@ -20,21 +24,17 @@ require_once('header&footer/header.php');
   </div>
   <div class="col-lg-9">
     <div class="task-columns-container mt-3" id="taskColumnsContainer">
-      <div class="task-column" id="backlog">
-      <a href="index.php" class="text-decoration-none text-white"><h3>Project 1</h3></a>
+    <?php
+    require_once('../models/projects.php');
+
+    $projects= project::getAll();
+    ?>
+    <?php foreach ($projects as $p) : ?>
+    <div class="task-column" id="backlog">
+      <a href="#" class="text-decoration-none text-white"><h3><?=$p->name?> </h3></a>
       </div>
 
-      <div class="task-column" id="backlog">
-      <a href="index.php" class="text-decoration-none text-white"><h3>Project 2</h3></a>
-      </div>
-
-      <div class="task-column" id="backlog">
-      <a href="index.php" class="text-decoration-none text-white"><h3>Project 3</h3></a>
-      </div>
-
-      <div class="task-column" id="backlog">
-      <a href="index.php" class="text-decoration-none text-white"><h3>Project 4</h3></a>
-      </div>
+      <?php endforeach; ?>
 
       
 

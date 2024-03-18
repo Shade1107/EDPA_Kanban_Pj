@@ -1,6 +1,6 @@
 <?php
-    require_once("models/model.php");
-    require_once("models/DatabaseConnection.php");
+    require_once("model.php");
+    require_once("DatabaseConnection.php");
 
     class project extends Model{
         private static $table = "projects";
@@ -10,7 +10,6 @@
         public $description;
         public $create_date;
         public $target_date;
-        public $completed_date;
 
         public static function getAll(){
             $query = "SELECT * FROM ". project::$table;
@@ -26,7 +25,6 @@
                 $project->description = $row->description;
                 $project->create_date = $row->create_date;
                 $project->target_date = $row->target_date;
-                $project->completed_date = $row->completed_date;
                 
                
                 $projects[] = $project;
@@ -47,7 +45,6 @@
                 $project->description = $row->description;
                 $project->create_date = $row->create_date;
                 $project->target_date = $row->target_date;
-                $project->completed_date = $row->completed_date;
                 
             }
             return $project;
@@ -79,14 +76,18 @@
             $table = project::$table;
 
             $query = "
-                        INSERT INTO $table (id, name, description, create_date,target_date,completed_date) values (null, '$project->id', '$project->name','$project->description','$project->create_date','$project->target_date','$project->completed_date');
+                        INSERT INTO $table (id, name, description, create_date,target_date) values (null, '$project->id', '$project->name','$project->description','$project->create_date','$project->target_date');
                     ";
-            $db = new DBConnection();
-            $conn = $db->getConnection();
-            $results = $conn->query($query);
-            return true;
-        }
-
-    }
+                    $db = new DBConnection();
+                    $conn = $db->getConnection();
+                    $results = $conn->query($query);
+                    if ($results === true) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            
+            }
 
 ?>

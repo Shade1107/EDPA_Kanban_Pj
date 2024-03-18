@@ -1,6 +1,6 @@
 <?php
-    require_once("models/model.php");
-    require_once("models/DatabaseConnection.php");
+    require_once("model.php");
+    require_once("DatabaseConnection.php");
 
     class member extends Model{
         private static $table = "users";
@@ -22,7 +22,7 @@
                 $member = new member();
                 $member-> id = $row->id;
                 $member->name = $row->name;
-                $member->email = $row->emial;
+                // $member->email = $row->emial;
                 $member->password = $row->password;
                 $member->role_id = $row->role_id;                
                
