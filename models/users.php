@@ -3,14 +3,12 @@
     require_once("models/DatabaseConnection.php");
 
     class member extends Model{
-        private static $table = "members";
+        private static $table = "users";
 
         public $id;
         public $name;
         public $email;
         public $password;
-        public $role_id;
-        public $status;
 
         public static function getAll(){
             $query = "SELECT * FROM ". member::$table;
@@ -24,10 +22,7 @@
                 $member-> id = $row->id;
                 $member->name = $row->name;
                 $member->email = $row->emial;
-                $member->password = $row->password;
-                $member->role_id = $row->role_id;
-                $member->status = $row->role_id;
-                
+                $member->password = $row->password;                
                
                 $members[] = $member;
             }
@@ -46,9 +41,6 @@
                 $member->name = $row->name;
                 $member->email = $row->emial;
                 $member->password = $row->password;
-                $member->role_id = $row->role_id;
-                $member->status = $row->role_id;
-                
             }
             return $member;
         }
@@ -79,7 +71,7 @@
             $table = member::$table;
 
             $query = "
-                        INSERT INTO $table (id, name, email, password,role_id,status) values (null, '$member->id', '$member->name','$member->email','$member->address','$member->role_id','$member->status');
+                        INSERT INTO $table (id, name, email, password) values (null, '$member->id', '$member->name','$member->email','$member->address','$member->role_id','$member->status');
                     ";
             $db = new DBConnection();
             $conn = $db->getConnection();

@@ -9,9 +9,8 @@
         public $name;
         public $description;
         public $create_date;
-        public $completed_date;
         public $target_date;
-        public $member_id;
+        public $completed_date;
 
         public static function getAll(){
             $query = "SELECT * FROM ". project::$table;
@@ -26,9 +25,8 @@
                 $project->name = $row->name;
                 $project->description = $row->description;
                 $project->create_date = $row->create_date;
-                $project->completed_date = $row->completed_date;
                 $project->target_date = $row->target_date;
-                $project->member_id = $row->member_id;
+                $project->completed_date = $row->completed_date;
                 
                
                 $projects[] = $project;
@@ -48,9 +46,8 @@
                 $project->name = $row->name;
                 $project->description = $row->description;
                 $project->create_date = $row->create_date;
-                $project->completed_date = $row->completed_date;
                 $project->target_date = $row->target_date;
-                $project->member_id = $row->member_id;
+                $project->completed_date = $row->completed_date;
                 
             }
             return $project;
@@ -82,7 +79,7 @@
             $table = project::$table;
 
             $query = "
-                        INSERT INTO $table (id, name, description, create_date,completed_date,target_date,member_id) values (null, '$project->id', '$project->name','$project->description','$project->create_date','$project->completed_date','$project->target_date','$project->member_id');
+                        INSERT INTO $table (id, name, description, create_date,target_date,completed_date) values (null, '$project->id', '$project->name','$project->description','$project->create_date','$project->target_date','$project->completed_date');
                     ";
             $db = new DBConnection();
             $conn = $db->getConnection();

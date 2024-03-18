@@ -2,48 +2,48 @@
     require_once("models/model.php");
     require_once("models/DatabaseConnection.php");
 
-    class stage extends Model{
-        private static $table = "stages";
+    class task_member extends Model{
+        private static $table = "task_members";
 
         public $id;
-        public $name;
+        public $member_id;
+        public $task_id;
 
         public static function getAll(){
-            $query = "SELECT * FROM ". stage::$table;
+            $query = "SELECT * FROM ". task_member::$table;
             $db = new DBConnection();
             $conn = $db->getConnection();
             $results = $conn->query($query);
-            $stages = [];
+            $task_members = [];
 
             while($row = mysqli_fetch_object($results)){
-                $stage = new stage();
-                $stage-> id = $row->id;
-                $stage->name = $row->name;
-                
-                
-               
-                $stages[] = $stage;
+                $task_member = new task_member();
+                $task_member-> id = $row->id;
+                $task_member-> member_id = $row->member_id;
+                $task_member-> task_id = $row->task_id;          
+
+                $task_members[] = $task_member;
             }
-            return $stages;
+            return $task_members;
         }
         public static function find($id){
-            $query = "SELECT * FROM ". stage::$table . " where id = $id limit 1;";
+            $query = "SELECT * FROM ". task_member::$table . " where id = $id limit 1;";
             $db = new DBConnection();
             $conn = $db->getConnection();
             $results = $conn->query($query);
             $row = mysqli_fetch_object($results);
             $invoice = null;
             if(isset($row)){
-                $stage = new stage();
-                $stage-> id = $row->id;
-                $stage->name = $row->name;
-                
+                $task_member = new task_member();
+                $task_member-> id = $row->id;
+                $task_member-> member_id = $row->member_id;
+                $task_member-> task_id = $row->task_id;
             }
-            return $stage;
+            return $task_member;
         }
 
         public static function delete($id){
-            $query = "DELETE FROM ". stage::$table . " where id = $id limit 1;";
+            $query = "DELETE FROM ". task_member::$table . " where id = $id limit 1;";
             $db = new DBConnection();
             $conn = $db->getConnection();
             $results = $conn->query($query);
@@ -51,11 +51,11 @@
         }
 
         public function update(){
-            $table = stage::$table;
+            $table = task_member::$table;
 
             $query = "
                         UPDATE $table 
-                        SET name = '$this->name'
+                        SET task_id = '$this->task_id'
                         WHERE id = $this->id
                     ";
             $db = new DBConnection();
@@ -64,11 +64,11 @@
             return true;
         }
 
-        public static function create($stage){
-            $table = stage::$table;
+        public static function create($task_member){
+            $table = task_member::$table;
 
             $query = "
-                        INSERT INTO $table (id, name) values (null, '$stage->id','$stage->name');
+                        INSERT INTO $table (id, member_id, task_id) values (null, '$task_member->id','$task_member->member_id', '$task_member->task_id');
                     ";
             $db = new DBConnection();
             $conn = $db->getConnection();
