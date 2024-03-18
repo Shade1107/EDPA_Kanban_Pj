@@ -25,7 +25,7 @@ $tasks = task::getAll();
           foreach ($tasks as $task) {
               echo "<div class='task-item'>" .
                    "  <h4>" . $task->short_description . "</h4>" .
-                   "  <p>" . $task->detail . "</p>" .
+                   "  <p>" . $task->task_name . "</p>" .
                    "</div>";
           }
           ?>
