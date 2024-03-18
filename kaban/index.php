@@ -1,7 +1,9 @@
 <?php 
 require_once('header&footer/header.php');
 require_once('../models/tasks.php');
-$tasks = task::getAll();   
+require_once('../models/stages.php');
+$tasks = task::getAll();
+$stages = stage::getAll();  
 ?>
  <link rel="icon" type="image/png" href="image/logo.PNG">
       <form class="input-container">
@@ -16,35 +18,25 @@ $tasks = task::getAll();
         <hr class="custom-hr" />
         <div class="task-list"></div>
       </div>
+      <?php
+      foreach($stages as $stage) { 
 
-      <div class="task-column item" draggable="true"  id="doing">
-        <h3>✔ To Do List</h3>
-        <hr class="custom-hr" />
-        <div class="task-list">
-        <?php
+      echo "<div class='task-column item' draggable='true' data-stage-id='<?php echo $stage->id; ?>'  id='doing'>".
+        " <h3>✔" . $stage->name ."</h3>".
+        "<hr class='custom-hr' />" .
+        "<div class='task-list'>";
           foreach ($tasks as $task) {
-              echo "<div class='task-item'>" .
-                   "  <h4>" . $task->short_description . "</h4>" .
-                   "  <p>" . $task->task_name . "</p>" .
-                   "</div>";
+              if ($task->stage_id == $stage->id) {
+                  echo "<div class='task-item'>" .
+                       "  <h4>" . $task->short_description . "</h4>" .
+                       "  <p>" . $task->task_name . "</p>" .
+                       "</div>";
+              }
           }
-          ?>
-        </div>
-      </div>
-
-      <div class="task-column item" draggable="true"  id="done">
-        <h3>✔ Doing Task</h3>
-        <hr class="custom-hr" />
-        <div class="task-list"></div>
-      </div>
-
-     
-
-      <div class="task-column item" draggable="true"  id="doing">
-        <h3>✔ Done</h3>
-        <hr class="custom-hr" />
-        <div class="task-list"></div>
-      </div>
+        echo"</div>" .
+      "</div>";
+    }
+    ?>  
     </section>
 
     <div class="error-container"></div>
