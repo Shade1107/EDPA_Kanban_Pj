@@ -1,5 +1,5 @@
 <?php
-require_once("DBConnection.php");
+require_once("../models/DatabaseConnection.php");
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
