@@ -1,6 +1,6 @@
 <?php
-    require_once("models/model.php");
-    require_once("models/DatabaseConnection.php");
+    require_once("model.php");
+    require_once("DatabaseConnection.php");
 
     class task extends Model{
         private static $table = "tasks";
@@ -9,7 +9,7 @@
         public $project_id;
         public $stage_id;
         public $short_description;
-        public $detail;
+        public $task_name;
 
         public static function getAll(){
             $query = "SELECT * FROM ". task::$table;
@@ -24,7 +24,7 @@
                 $task-> project_id = $row->project_id;
                 $task->stage_id = $row->stage_id;
                 $task->short_description = $row->short_description;
-                $task->detail = $row->detail;
+                $task->task_name = $row->task_name;
                 
                 
                
@@ -45,7 +45,7 @@
                 $task-> project_id = $row->project_id;
                 $task->stage_id = $row->stage_id;
                 $task->short_description = $row->short_description;
-                $task->detail = $row->detail;
+                $task->task_name = $row->task_name;
                 
             }
             return $task;
@@ -83,7 +83,7 @@
             $conn = $db->getConnection();
             $results = $conn->query($query);
             return true;
-        }
+        }       
 
     }
 

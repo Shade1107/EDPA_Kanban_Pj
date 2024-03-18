@@ -1,6 +1,9 @@
 <?php 
 require_once('header&footer/header.php');
+<<<<<<< HEAD
 require_once('../models/DatabaseConnection.php');
+=======
+>>>>>>> 7f2521a43e537b993b4dd9f5946d9d6b12c583c1
 ?>
  <link rel="icon" type="image/png" href="image/logo.PNG">
      <!--  <form class="input-container">
@@ -21,6 +24,7 @@ require_once('../models/DatabaseConnection.php');
   </div>
   <div class="col-lg-9">
     <div class="task-columns-container mt-3" id="taskColumnsContainer">
+<<<<<<< HEAD
     <?php
     require_once('../models/projects.php');
 
@@ -33,6 +37,23 @@ require_once('../models/DatabaseConnection.php');
 
       <?php endforeach; ?>
       
+=======
+      <div class="task-column" id="backlog">
+      <a href="index.php" class="text-decoration-none text-white"><h3>Project 1</h3></a>
+      </div>
+
+      <div class="task-column" id="backlog">
+      <a href="index.php" class="text-decoration-none text-white"><h3>Project 2</h3></a>
+      </div>
+
+      <div class="task-column" id="backlog">
+      <a href="index.php" class="text-decoration-none text-white"><h3>Project 3</h3></a>
+      </div>
+
+      <div class="task-column" id="backlog">
+      <a href="index.php" class="text-decoration-none text-white"><h3>Project 4</h3></a>
+      </div>
+>>>>>>> 7f2521a43e537b993b4dd9f5946d9d6b12c583c1
 
       
 
