@@ -1,7 +1,7 @@
 <?php 
 require_once('header&footer/header.php');
-
-   
+require_once('../models/tasks.php');
+$tasks = task::getAll();   
 ?>
  <link rel="icon" type="image/png" href="image/logo.PNG">
       <form class="input-container">
@@ -20,7 +20,16 @@ require_once('header&footer/header.php');
       <div class="task-column item" draggable="true"  id="doing">
         <h3>✔ To Do List</h3>
         <hr class="custom-hr" />
-        <div class="task-list"></div>
+        <div class="task-list">
+        <?php
+          foreach ($tasks as $task) {
+              echo "<div class='task-item'>" .
+                   "  <h4>" . $task->short_description . "</h4>" .
+                   "  <p>" . $task->detail . "</p>" .
+                   "</div>";
+          }
+          ?>
+        </div>
       </div>
 
       <div class="task-column item" draggable="true"  id="done">

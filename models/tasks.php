@@ -83,7 +83,7 @@
             $conn = $db->getConnection();
             $results = $conn->query($query);
             return true;
-        }
+        }       
 
     }
 
