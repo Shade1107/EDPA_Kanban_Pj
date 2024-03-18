@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
     $email = $_POST["email"];
     $password = $_POST["password"];
+    $role_id = 2;
 
     $db = new DBConnection();
     $conn = $db->getConnection();
@@ -16,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ";
     $result = $conn->query($query);
 }
-
+echo $role_id;
 if ($result->num_rows > 0) {
     echo  '
     <script>
@@ -27,8 +28,8 @@ if ($result->num_rows > 0) {
  } else {
             // If the user doesn't exist, insert the data into the database
         $query = "
-            INSERT INTO $table (name, email, password) 
-            VALUES ('$name', '$email', '$password')
+            INSERT INTO $table (name, email, password, role_id) 
+            VALUES ('$name', '$email', '$password', '$role_id')
         ";
         $insert_result = $conn->query($query);
 
@@ -40,4 +41,5 @@ if ($result->num_rows > 0) {
             echo "Failed to insert user data.";
         }
  }
+ echo $role_id;
 ?>
