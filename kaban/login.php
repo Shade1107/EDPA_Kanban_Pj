@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="loginForm">
-    <form method="post" action="logfunction.php">
+    <form method="post" action="loginfunc.php">
         <h1 class="loginFormText">⟁ Kanban Board</h1>
         <!-- <div class="mb-4 input-group-lg col-auto" >
             <label for="name" class="form-label">Name</label> <br>
