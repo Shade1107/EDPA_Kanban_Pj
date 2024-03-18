@@ -9,6 +9,7 @@
         public $name;
         public $email;
         public $password;
+        public $role_id;
 
         public static function getAll(){
             $query = "SELECT * FROM ". member::$table;
@@ -22,7 +23,8 @@
                 $member-> id = $row->id;
                 $member->name = $row->name;
                 $member->email = $row->emial;
-                $member->password = $row->password;                
+                $member->password = $row->password;
+                $member->role_id = $row->role_id;                
                
                 $members[] = $member;
             }
@@ -41,6 +43,7 @@
                 $member->name = $row->name;
                 $member->email = $row->emial;
                 $member->password = $row->password;
+                $member->role_id = $row->role_id;
             }
             return $member;
         }
@@ -71,7 +74,7 @@
             $table = member::$table;
 
             $query = "
-                        INSERT INTO $table (id, name, email, password) values (null, '$member->id', '$member->name','$member->email','$member->address','$member->role_id','$member->status');
+                        INSERT INTO $table (id, name, email, password,role_id) values (null, '$member->id', '$member->name','$member->email','$member->address','$member->role_id','$member->status','$member->role_id');
                     ";
             $db = new DBConnection();
             $conn = $db->getConnection();

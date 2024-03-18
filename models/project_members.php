@@ -8,7 +8,7 @@
         public $id;
         public $user_id;
         public $project_id;
-        public $role_id;
+
 
         public static function getAll(){
             $query = "SELECT * FROM ". project_member::$table;
@@ -21,9 +21,7 @@
                 $project_member = new project_member();
                 $project_member-> id = $row->id;
                 $project_member-> user_id = $row->user_id;
-                $project_member-> project_id = $row->project_id;
-                $project_member->role_id = $row->role_id;
-                
+                $project_member-> project_id = $row->project_id;            
                 
                
                 $project_members[] = $project_member;
@@ -42,7 +40,6 @@
                 $project_member-> id = $row->id;
                 $project_member-> user_id = $row->user_id;
                 $project_member-> project_id = $row->project_id;
-                $project_member->role_id = $row->role_id;
             }
             return $project_member;
         }
@@ -60,7 +57,7 @@
 
             $query = "
                         UPDATE $table 
-                        SET role_id = '$this->role_id'
+                        SET project_id = '$this->project_id'
                         WHERE id = $this->id
                     ";
             $db = new DBConnection();
@@ -73,7 +70,7 @@
             $table = project_member::$table;
 
             $query = "
-                        INSERT INTO $table (id, user_id, project_id, role_id) values (null, '$project_member->id','$project_member->user_id', '$project_member->project_id', '$project_member->role_id');
+                        INSERT INTO $table (id, user_id, project_id) values (null, '$project_member->id','$project_member->user_id', '$project_member->project_id');
                     ";
             $db = new DBConnection();
             $conn = $db->getConnection();
