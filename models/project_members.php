@@ -1,6 +1,6 @@
 <?php
-    require_once("models/model.php");
-    require_once("models/DatabaseConnection.php");
+    require_once("model.php");
+    require_once("DatabaseConnection.php");
 
     class project_member extends Model{
         private static $table = "project_members";
@@ -70,7 +70,7 @@
             $table = project_member::$table;
 
             $query = "
-                        INSERT INTO $table (id, user_id, project_id) values (null, '$project_member->id','$project_member->user_id', '$project_member->project_id');
+            INSERT INTO $table (id, user_id, project_id) values (null, '$project_member->id','$project_member->user_id', '$project_member->project_id');
                     ";
             $db = new DBConnection();
             $conn = $db->getConnection();
