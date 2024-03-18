@@ -7,6 +7,7 @@
 
         public $id;
         public $task_id;
+        public $member_id;
         public $project_id;
         public $stage_id;
         public $short_description;
@@ -23,6 +24,7 @@
                 $task = new task_history();
                 $task-> id = $row->id;
                 $task-> task_id = $row->task_id;
+                $task-> member_id = $row->member_id;
                 $task-> project_id = $row->project_id;
                 $task->stage_id = $row->stage_id;
                 $task->short_description = $row->short_description;
@@ -45,6 +47,7 @@
                 $task = new task_history();
                 $task-> id = $row->id;
                 $task-> task_id = $row->task_id;
+                $task-> member_id = $row->member_id;
                 $task-> project_id = $row->project_id;
                 $task->stage_id = $row->stage_id;
                 $task->short_description = $row->short_description;
@@ -80,7 +83,7 @@
             $table = task_history::$table;
 
             $query = "
-                        INSERT INTO $table (id, task_id, project_id, stage_id,short_description,detail) values (null, '$task->id', '$task->task_id', '$task->project_id', '$task->stage_id','$task->short_description','$task->detail');
+                        INSERT INTO $table (id, task_id, member_id, project_id, stage_id,short_description,detail) values (null, '$task->id', '$task->member_id', '$task->project_id','$task->detail', '$task->stage_id','$task->short_description','$task->detail');
                     ";
             $db = new DBConnection();
             $conn = $db->getConnection();
