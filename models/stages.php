@@ -18,10 +18,7 @@
             while($row = mysqli_fetch_object($results)){
                 $stage = new stage();
                 $stage-> id = $row->id;
-                $stage->name = $row->name;
-                
-                
-               
+                $stage->name = $row->name;              
                 $stages[] = $stage;
             }
             return $stages;
