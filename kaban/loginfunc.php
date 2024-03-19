@@ -8,13 +8,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    // Perform basic validation
-    if ( empty($email) || empty($password)) {
-        echo '
-        <script>
-            window.location.href = "login.php";
-            alert("All fields are required");
-        </script>';
+    if ( empty($email) && empty($password) ) {
+        
+        header("Location:login.php?FieldEmpty=true&email=$email");
+        exit;
+    }else if ( empty($password)) {
+        header("Location:login.php?PasswordEmpty=true&email=$email");
+        exit;
+    }else if ( empty($email)){
+        header("Location:login.php?EmailEmpty=true&email=$email");
         exit;
     }
 
@@ -28,16 +30,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($query);
 
     if ($result->num_rows > 0) {
-        // If the user already exists, redirect to switch.php
-        header("Location: index.php");
-        exit;
-     } else {
+        $user = $result->fetch_assoc();
+        $role_id = $user['role_id'];
+
+        // Determine user role and redirect accordingly
+        if ($role_id == '1') {
+            // Redirect admin to admin page
+            header("Location: addtask(admin).php");
+            exit;
+        } else {
+            // Redirect member to member page
+            header("Location: addtask(member).php");
+            exit;
+        }
+    } else {
+        // If the user does not exist
         echo  '
         <script>
             window.location.href = "login.php";
-            alert("This user does not exist");
+            alert("This your does not  exist");
         </script>';
     }
 }
+?>
 ?>
 
