@@ -13,36 +13,33 @@ $stages = stage::getAll();
     </header>
 
     <section class="column-container container" id="container">
-      <div class="task-column item" draggable="true" id="backlog">
+      <!-- <div class="task-column item" draggable="true" id="backlog">
         <h3>✔ Planning</h3>
         <hr class="custom-hr" />
         <div class="task-list"></div>
-      </div>
+      </div> -->
       <?php
       foreach($stages as $stage) { 
 
-      echo "<div class='task-column item' draggable='true' data-stage-id='<?php echo $stage->id; ?>'  id='doing'>".
+      echo "<div class='task-column item' draggable='true' id=''>".
         " <h3>✔" . $stage->name ."</h3>".
         "<hr class='custom-hr' />" .
         "<div class='task-list'>";
-          foreach ($tasks as $task) {
+          foreach ($tasks as $task){
               if ($task->stage_id == $stage->id) {
                   echo "<div class='task-item'>" .
                        "  <h4>" . $task->short_description . "</h4>" .
                        "  <p>" . $task->task_name . "</p>" .
                        "</div>";
               }
-          }
-        echo"</div>" .
-      "</div>";
-    }
-    ?>  
+            }
+          echo"</div>".
+        "</div>";
+      }
+?>
     </section>
 
     <div class="error-container"></div>
-
-    
-
     <script src="js/app.js"></script>
   </body>
 </html>
