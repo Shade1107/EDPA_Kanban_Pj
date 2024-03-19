@@ -63,7 +63,7 @@ $insert_result = $conn->query($query);
 
 if ($insert_result) {
     // Redirect to the index page
-    header("Location: index.php");
+    header("Location: addProject(user).php");
     exit;
 } else {
     echo "Failed to insert user data.";

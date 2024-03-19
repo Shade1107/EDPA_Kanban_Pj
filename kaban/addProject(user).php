@@ -31,7 +31,7 @@ require_once('../models/DatabaseConnection.php');
     ?>
     <?php foreach ($projects as $p) : ?>
     <div class="task-column" id="backlog">
-      <a href="#" class="text-decoration-none text-white"><h3><?=$p->name?> </h3></a>
+    <a href="addtask(member).php?id=<?= $p->id?>" class="text-decoration-none text-white"><h3><?=$p->name?> </h3></a>
       </div>
 
       <?php endforeach; ?>

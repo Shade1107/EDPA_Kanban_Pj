@@ -13,7 +13,10 @@ $stages = stage::getAll();
   $projects = project::find($id);
 ?>
  <link rel="icon" type="image/png" href="image/logo.PNG">
-      
+      <form class="input-container">
+        
+      <a href="createtask.php?id=<?= $projects->id?>" class="btn" type="button">Add Task</a>
+      </form>
     </header>
     <section class="column-container container" id="container">
       

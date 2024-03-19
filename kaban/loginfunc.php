@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Determine user role and redirect accordingly
         if ($role_id == '1') {
             // Redirect admin to admin page
-            header("Location: addtask(admin).php");
+            header("Location: addproject(admin).php");
             exit;
         } else {
             // Redirect member to member page
