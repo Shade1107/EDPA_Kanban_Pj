@@ -22,7 +22,7 @@
                 $member = new member();
                 $member-> id = $row->id;
                 $member->name = $row->name;
-                // $member->email = $row->emial;
+                 $member->email = $row->email;
                 $member->password = $row->password;
                 $member->role_id = $row->role_id;                
                
