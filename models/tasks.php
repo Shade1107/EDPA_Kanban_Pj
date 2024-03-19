@@ -83,6 +83,25 @@
             return true;
         }       
 
+        public static function getByProject($project_id) {
+            $query = "SELECT * FROM tasks WHERE project_id = $project_id";
+            $db = new DBConnection();
+            $conn = $db->getConnection();
+            $results = $conn->query($query);
+            $tasks = [];
+            while ($row = mysqli_fetch_object($results)) {
+                $task = new task();
+                $task->id = $row->id;
+                $task->task_name = $row->task_name;
+                $task->short_description = $row->short_description;
+                $task->stage_id = $row->stage_id;
+                // Add more properties as needed
+                $tasks[] = $task;
+            }
+            return $tasks;
+        }
+
     }
 
+    
 ?>

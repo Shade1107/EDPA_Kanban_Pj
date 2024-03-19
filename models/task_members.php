@@ -6,7 +6,7 @@
         private static $table = "task_members";
 
         public $id;
-        public $member_id;
+        public $user_id;
         public $task_id;
 
         public static function getAll(){
@@ -19,7 +19,7 @@
             while($row = mysqli_fetch_object($results)){
                 $task_member = new task_member();
                 $task_member-> id = $row->id;
-                $task_member-> member_id = $row->member_id;
+                $task_member-> user_id = $row->user_id;
                 $task_member-> task_id = $row->task_id;          
 
                 $task_members[] = $task_member;
@@ -36,7 +36,7 @@
             if(isset($row)){
                 $task_member = new task_member();
                 $task_member-> id = $row->id;
-                $task_member-> member_id = $row->member_id;
+                $task_member-> user_id = $row->user_id;
                 $task_member-> task_id = $row->task_id;
             }
             return $task_member;
@@ -68,7 +68,7 @@
             $table = task_member::$table;
 
             $query = "
-                        INSERT INTO $table (id, member_id, task_id) values (null, '$task_member->id','$task_member->member_id', '$task_member->task_id');
+                        INSERT INTO $table (id, user_id, task_id) values (null, '$task_member->id','$task_member->user_id', '$task_member->task_id');
                     ";
             $db = new DBConnection();
             $conn = $db->getConnection();

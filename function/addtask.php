@@ -2,16 +2,16 @@
 
 require_once("../models/DatabaseConnection.php");
 
-class Project {
-    public static $table = "projects";
+class task {
+    public static $table = "tasks";
 
-    public static function create($project) {
+    public static function create($task) {
         $db = (new DBConnection())->getConnection();
-        $title = $db->real_escape_string($project->name);
-        $description = $db->real_escape_string($project->description);
-        $create_date = $db->real_escape_string($project->create_date);
-        $due_date = $db->real_escape_string($project->due_date);
-        $query = "INSERT INTO " . self::$table . " (name, description, create_date, due_date) VALUES ('$title', '$description', '$create_date', '$due_date')";
+        $project_id = $db->real_escape_string($task->project_id);
+        $stage = $db->real_escape_string($task->stage_id);
+        $description = $db->real_escape_string($task->short_description);   
+        $task_name = $db->real_escape_string($task->task_name);
+        $query = "INSERT INTO " . self::$table . " (project_id,stage_id, short_description, task_name) VALUES ('$project_id','1', '$description', '$task_name')";
         $result = $db->query($query);
         if ($result) {
             return $db->insert_id;
@@ -22,16 +22,16 @@ class Project {
     }
 }
 
-class ProjectMember {
-    public static $table = "project_members";
+class taskMember {
+    public static $table = "task_members";
 
-    public static function create($projectId, $memberId) {
+    public static function create($taskId, $memberId) {
         $db = (new DBConnection())->getConnection();
-        $project_id = $db->real_escape_string($projectId);
         $user_id = $db->real_escape_string($memberId);
+        $taskId = $db->real_escape_string($taskId);
         
         // Prepare the SQL query
-        $query = "INSERT INTO " . self::$table . " (project_id, user_id) VALUES ('$project_id', '$user_id')";
+        $query = "INSERT INTO " . self::$table . " (user_id,task_id) VALUES ('$user_id','$taskId')";
         
         // Execute the query
         $result = $db->query($query);
@@ -48,34 +48,34 @@ class ProjectMember {
     }
 }
 
-
 function handleFormSubmission() {
     $result = null;
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Extract project data from the form
-        $title = $_POST["Project_title"];
+       
+        $project_id = $_POST["id"];
+        $stage = $_POST["stage"];
         $description = $_POST["Description"];
-        $create_date = $_POST["CreateD"];
-        $due_date = $_POST["TargetD"];
+        $task_name = $_POST["task_name"];
         $members = isset($_POST["member"]) ? $_POST["member"] : [];
 
         // Create project
-        $project = new stdClass();
-        $project->name = $title;
-        $project->description = $description;
-        $project->create_date = $create_date;
-        $project->due_date = $due_date;
+        $task = new stdClass();
+        $task->project_id = $project_id;
+        $task->stage_id = $stage;
+        $task->short_description = $description;
+        $task->task_name = $task_name;
 
-        $projectId = Project::create($project);
+        $taskId = task::create($task);
 
-        if ($projectId) {
+        if ($taskId) {
             // Insert project members
             foreach ($members as $memberId) {
-                $inserted = ProjectMember::create($projectId, $memberId);
+                $inserted = taskMember::create($taskId, $memberId);
                 if (!$inserted) {
                     $result['code'] = -1;
-                    $result['message'] = "Failed to insert member $memberId for project $projectId";
+                    $result['message'] = "Failed to insert member $memberId for project $taskId";
                     return $result;
                 }
             }

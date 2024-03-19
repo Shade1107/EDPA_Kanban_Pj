@@ -9,7 +9,7 @@
         public $name;
         public $description;
         public $create_date;
-        public $target_date;
+        public $due_date;
 
         public static function getAll(){
             $query = "SELECT * FROM ". project::$table;
@@ -24,7 +24,7 @@
                 $project->name = $row->name;
                 $project->description = $row->description;
                 $project->create_date = $row->create_date;
-                $project->target_date = $row->target_date;
+                $project->due_date = $row->due_date;
                 
                
                 $projects[] = $project;
@@ -44,7 +44,7 @@
                 $project->name = $row->name;
                 $project->description = $row->description;
                 $project->create_date = $row->create_date;
-                $project->target_date = $row->target_date;
+                $project->due_date = $row->due_date;
                 
             }
             return $project;
