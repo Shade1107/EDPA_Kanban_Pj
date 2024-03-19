@@ -147,7 +147,7 @@ function showError(message) {
   errorMessage.classList.add('error-message')
   errorContainer.append(errorMessage)
 
-  setTimeout(() => {
+  setTimeout(()  => {
     errorContainer.textContent = ''
   }, 2000)
 }
@@ -195,8 +195,6 @@ function deleteTask() {
 //   taskList.addEventListener('dragleave', dragLeave)
 // })
 
-
-
 // function dragOver(e) {
 //   e.preventDefault()
 //   this.classList.add('drag-over')
@@ -208,6 +206,3 @@ function deleteTask() {
 //   this.append(elementBeingDragged)
 //   this.classList.remove('drag-over')
 // }
-
-
-

@@ -25,9 +25,7 @@
                 $task->stage_id = $row->stage_id;
                 $task->short_description = $row->short_description;
                 $task->task_name = $row->task_name;
-                
-                
-               
+    
                 $tasks[] = $task;
             }
             return $tasks;
