@@ -86,12 +86,14 @@ require_once('header&footer/header.php');
 </style>
 
 
+      
+
       <div class="input-container">
         <a class="btn" type="button" href="createtask.php">Add Task</a>
 
-        <!-- The Modal -->
+      </div>
 
-</div>
+      
     </header>
 
     <section class="column-container">
