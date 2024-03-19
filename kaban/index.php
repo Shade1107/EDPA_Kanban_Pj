@@ -8,7 +8,7 @@ $stages = stage::getAll();
  <link rel="icon" type="image/png" href="image/logo.PNG">
       <form class="input-container">
         
-        <button class="btn "  >Add Task</button>
+        <button class="btn">Add Task</button>
       </form>
     </header>
 
@@ -38,11 +38,7 @@ $stages = stage::getAll();
     }
     ?>  
     </section>
-
     <div class="error-container"></div>
-
-    
-
     <script src="js/app.js"></script>
   </body>
 </html>
