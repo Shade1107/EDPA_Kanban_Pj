@@ -11,8 +11,6 @@ require_once('header&footer/header.php');
       </form> -->
     </header>
     
-
-
       <section class="column-container row">
   <div class="leftSideBar col-lg-3 h-10">
     <h3 class="text-center text-white mt-5">Project</h3>
