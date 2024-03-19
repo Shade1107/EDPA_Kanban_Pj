@@ -4,9 +4,6 @@ require_once("../models/DatabaseConnection.php");
 require_once("../models/model.php");
 require_once("../models/users.php");
 
-
-
-
 $members = member::getAll();
 ?>
 
@@ -15,41 +12,44 @@ $members = member::getAll();
 </header>
 
 <section class="column-container container" id="container">
-    <div class="task-column item" draggable="true" id="backlog" style="width:50%">
+    <div class="task-column item" draggable="true" id="backlog" style="width:100%">
         <h3>✔ Member list ✔</h3>
         <hr class="custom-hr" />
 
-        <table class="table table-striped">
+        <table class="table table-striped" >
             <thead class="table-light">
                 <tr class="h5">
                     <th>ID</th>
-                    <td>Name</td>
-                    <td>Email</td>
-                    <td>Password</td>
-                    <td>Role</td>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                    <th>Action</th>
                 </tr>
             </thead>
            
- <tbody>
-    <?php foreach ($members as $list) : ?>
-    <tr style="color:white">
-        <th><?= $list->id ?></th>
-        <td><?= $list->name ?></td>
-        <td><?= $list->email ?></td>
-        <td><?= $list->password ?></td>
+            <tbody>
+                <?php foreach ($members as $list) : ?>
+                <tr style="color:white">
+                    <td><?= $list->id ?></td>
+                    <td><?= $list->name ?></td>
+                    <td><?= $list->email ?></td>
+                    <td><?= $list->password ?></td>
 
-        <td>
-            <?php
-            $db = new DBConnection();
-            $conn = $db->getConnection();
-            $role = mysqli_fetch_object($conn->query("SELECT * FROM roles WHERE id = ". $list->role_id));
-            echo $role->name;
-            ?>
-        </td>
-            </tr>
-            <?php endforeach ?>
-        </tbody>
-
+                    <td>
+                        <?php
+                        $db = new DBConnection();
+                        $conn = $db->getConnection();
+                        $role = mysqli_fetch_object($conn->query("SELECT * FROM roles WHERE id = ". $list->role_id));
+                        echo $role->name;
+                        ?>
+                    </td>
+                    <td><a href="#">Edit</a>
+                    <a href="delete.php?id=<?= $list->id ?>">Delete</a></td>
+                
+                </tr>
+                <?php endforeach ?>
+            </tbody>
         </table>
        
     </div>
