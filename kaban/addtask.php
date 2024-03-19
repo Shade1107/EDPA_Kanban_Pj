@@ -31,7 +31,9 @@
     
    <form>
    <h1 class="loginFormText">⟁ Kanban Board</h1>
+
   <div class="mb-4 input-group-lg col-auto" >
+
     <label for="addmember" class="form-label">Add Member</label> 
     <input type="text"  id="addmember" class="input-field">
   
@@ -47,8 +49,6 @@
     <input type="password" id="exampleInputPassword1" class="input-field" >
   </div>
 
-
-  
   <button type="button" class="button">Login</button>
  
 </form>
