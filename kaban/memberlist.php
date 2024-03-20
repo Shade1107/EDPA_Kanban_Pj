@@ -44,7 +44,7 @@ $members = member::getAll();
                         echo $role->name;
                         ?>
                     </td>
-                    <td><a href="#">Edit</a>
+                    <td> <a href="editpage.php?id=<?= $list->id ?>">Edit</a>
                     <a href="delete.php?id=<?= $list->id ?>">Delete</a></td>
                 
                 </tr>
