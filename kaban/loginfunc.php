@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         } else {
             // Redirect member to member page
-            header("Location: addtask(member).php");
+            header("Location: addproject(user).php");
             exit;
         }
     } else {

@@ -19,6 +19,10 @@ require_once('../models/DatabaseConnection.php');
       <section class="column-container row" >
   <div class="leftSideBar col-lg-3 h-10">
     <h3 class="text-center text-white mt-5">Project</h3>
+
+    <div class="input-container">
+      <a class="btn" type="button" href="memberlist.php">Member List</a>
+      </div>
     
   </div>
   <div class="col-lg-9">
