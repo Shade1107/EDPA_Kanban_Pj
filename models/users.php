@@ -22,7 +22,7 @@
                 $member = new member();
                 $member-> id = $row->id;
                 $member->name = $row->name;
-                 $member->email = $row->email;
+                $member->email = $row->email;
                 $member->password = $row->password;
                 $member->role_id = $row->role_id;                
                
@@ -36,12 +36,12 @@
             $conn = $db->getConnection();
             $results = $conn->query($query);
             $row = mysqli_fetch_object($results);
-            $invoice = null;
+            $member = null;
             if(isset($row)){
                 $member = new member();
                 $member-> id = $row->id;
                 $member->name = $row->name;
-                $member->email = $row->emial;
+                $member->email = $row->email;
                 $member->password = $row->password;
                 $member->role_id = $row->role_id;
             }
@@ -58,12 +58,16 @@
 
         public function update(){
             $table = member::$table;
-
+        
             $query = "
-                        UPDATE $table 
-                        SET name = '$this->name'
-                        WHERE id = $this->id
-                    ";
+                UPDATE $table 
+                SET name = '$this->name',
+                    email = '$this->email',
+                    password = '$this->password',
+                    role_id = '$this->role_id'
+                WHERE id = $this->id
+            ";
+        
             $db = new DBConnection();
             $conn = $db->getConnection();
             $results = $conn->query($query);
