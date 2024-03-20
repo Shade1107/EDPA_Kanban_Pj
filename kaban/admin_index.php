@@ -14,9 +14,15 @@ $stages = stage::getAll();
 ?>
  <link rel="icon" type="image/png" href="image/logo.PNG">
       <form class="input-container">
-        
+
+      <div class="input-container">
+      <a class="btn" type="button" href="memberlist.php?id=<?= $projects->id?>">Member List</a>
+      </div>
+      <div class="input-container">
       <a href="createtask.php?id=<?= $projects->id?>" class="btn" type="button">Add Task</a>
+      </div>
       </form>
+
     </header>
     <section class="column-container container" id="container">
       

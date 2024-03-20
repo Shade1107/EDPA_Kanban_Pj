@@ -37,7 +37,7 @@
             $conn = $db->getConnection();
             $results = $conn->query($query);
             $row = mysqli_fetch_object($results);
-            $invoice = null;
+            $project = null;
             if(isset($row)){
                 $project = new project();
                 $project-> id = $row->id;
