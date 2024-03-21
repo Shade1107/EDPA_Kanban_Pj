@@ -11,6 +11,9 @@ require_once('../models/DatabaseConnection.php');
         <input type="submit" id="submit-button" />
       </form> -->
 
+      <div class="input-container">
+      <a class="btn" type="button" href="signout.php">Sign Out</a>
+      </div>
 
     </header>
     
